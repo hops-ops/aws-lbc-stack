@@ -15,7 +15,7 @@ spec:
   - apiVersion: pkg.crossplane.io/v1
     kind: Configuration
     package: ghcr.io/hops-ops/aws-pod-identity
-    version: '>=v0.5.0'
+    version: '>=v0.6.0'
   description: Installs the AWS Load Balancer Controller Helm chart with AWS Pod Identity.
   license: Apache-2.0
   maintainer: Patrick Lee Scott <pat@patscott.io>
