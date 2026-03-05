@@ -25,6 +25,7 @@ spec:
     {{- else }}
     values:
       clusterName: {{ $state.clusterName }}
+      region: {{ $state.aws.region }}
       {{- if $state.helm.values }}
       {{- toYaml $state.helm.values | nindent 6 }}
       {{- end }}
