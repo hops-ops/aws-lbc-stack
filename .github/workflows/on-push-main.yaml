@@ -27,10 +27,10 @@ jobs:
     with:
       examples: |
         [
-          { "example": "examples/loadbalancercontrollers/minimal.yaml" },
-          { "example": "examples/loadbalancercontrollers/standard.yaml" }
+          { "example": "examples/bases/minimal.yaml" },
+          { "example": "examples/bases/standard.yaml" }
         ]
-      api_path: apis/loadbalancercontrollers
+      api_path: apis/bases
       error_on_missing_schemas: true
 
   test:

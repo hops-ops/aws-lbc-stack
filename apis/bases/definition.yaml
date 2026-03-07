@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: loadbalancercontrollers.helm.aws.hops.ops.com.ai
+  name: bases.stacks.aws.hops.ops.com.ai
 spec:
-  group: helm.aws.hops.ops.com.ai
+  group: stacks.aws.hops.ops.com.ai
   names:
-    kind: LoadBalancerController
-    plural: loadbalancercontrollers
+    kind: Base
+    plural: bases
   scope: Namespaced
   defaultCompositeDeletePolicy: Foreground
   versions:

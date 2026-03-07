@@ -1,13 +1,13 @@
 apiVersion: meta.dev.upbound.io/v2alpha1
 kind: Project
 metadata:
-  name: helm-aws-load-balancer-controller
+  name: stack-aws-base
 spec:
   dependsOn:
   - apiVersion: pkg.crossplane.io/v1
     kind: Provider
     package: xpkg.crossplane.io/crossplane-contrib/provider-helm
-    version: ">=v1"
+    version: '>=v1'
   - apiVersion: pkg.crossplane.io/v1
     kind: Function
     package: xpkg.crossplane.io/crossplane-contrib/function-auto-ready
@@ -20,9 +20,9 @@ spec:
   license: Apache-2.0
   maintainer: Patrick Lee Scott <pat@patscott.io>
   readme: |
-    # helm-aws-load-balancer-controller
+    # stack-aws-base
 
     Installs the AWS Load Balancer Controller Helm chart with AWS Pod Identity
     for automated IAM permissions.
-  repository: ghcr.io/hops-ops/helm-aws-load-balancer-controller
-  source: github.com/hops-ops/helm-aws-load-balancer-controller
+  repository: ghcr.io/hops-ops/stack-aws-base
+  source: github.com/hops-ops/stack-aws-base

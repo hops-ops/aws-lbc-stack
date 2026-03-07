@@ -1,15 +1,15 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: loadbalancercontrollers.helm.aws.hops.ops.com.ai
+  name: bases.stacks.aws.hops.ops.com.ai
 spec:
   compositeTypeRef:
-    apiVersion: helm.aws.hops.ops.com.ai/v1alpha1
-    kind: LoadBalancerController
+    apiVersion: stacks.aws.hops.ops.com.ai/v1alpha1
+    kind: Base
   mode: Pipeline
   pipeline:
   - functionRef:
-      name: hops-ops-helm-aws-load-balancer-controllerrender
+      name: hops-ops-stack-aws-baserender
     step: render
   - functionRef:
       name: crossplane-contrib-function-auto-ready

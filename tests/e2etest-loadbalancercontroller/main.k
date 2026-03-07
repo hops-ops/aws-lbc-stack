@@ -25,7 +25,7 @@ import file
 import datetime
 import math
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
-import models.ai.com.ops.hops.aws.helm.v1alpha1 as helmawsv1alpha1
+import models.ai.com.ops.hops.aws.stacks.v1alpha1 as stacksv1alpha1
 
 # Read AWS credentials from local file (gitignored)
 _creds = file.read("secrets/aws-creds")
@@ -65,7 +65,7 @@ _items = [
             cleanupTimeoutSeconds = 1800
             skipDelete = False
             # initResources: Install infrastructure Configuration packages
-            # Note: helm-aws-load-balancer-controller and aws-pod-identity are auto-installed as dependencies
+            # Note: stack-aws-base and aws-pod-identity are auto-installed as dependencies
             initResources = [
                 # aws-auto-eks-cluster Configuration package (provides AutoEKSCluster XRD)
                 {
@@ -226,7 +226,7 @@ _items = [
                     }
                 }
                 # 2. helm.aws LoadBalancerController - installs ALB controller with AWS Pod Identity
-                helmawsv1alpha1.LoadBalancerController {
+                stacksv1alpha1.Base {
                     metadata.name = "e2etest-lbc"
                     metadata.namespace = _namespace
                     spec = {

@@ -1,5 +1,5 @@
-apiVersion: helm.aws.hops.ops.com.ai/v1alpha1
-kind: LoadBalancerController
+apiVersion: stacks.aws.hops.ops.com.ai/v1alpha1
+kind: Base
 metadata:
   name: aws-load-balancer-controller
   namespace: example-env
