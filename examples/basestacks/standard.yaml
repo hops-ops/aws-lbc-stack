@@ -1,5 +1,5 @@
-apiVersion: stacks.aws.hops.ops.com.ai/v1alpha1
-kind: Base
+apiVersion: aws.hops.ops.com.ai/v1alpha1
+kind: BaseStack
 metadata:
   name: aws-load-balancer-controller
   namespace: example-env

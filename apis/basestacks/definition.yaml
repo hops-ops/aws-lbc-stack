@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: bases.stacks.aws.hops.ops.com.ai
+  name: basestacks.aws.hops.ops.com.ai
 spec:
-  group: stacks.aws.hops.ops.com.ai
+  group: aws.hops.ops.com.ai
   names:
-    kind: Base
-    plural: bases
+    kind: BaseStack
+    plural: basestacks
   scope: Namespaced
   defaultCompositeDeletePolicy: Foreground
   versions:
@@ -15,11 +15,11 @@ spec:
     served: true
     schema:
       openAPIV3Schema:
-        description: LoadBalancerController installs the AWS Load Balancer Controller Helm chart with AWS Pod Identity.
+        description: BaseStack installs the AWS Load Balancer Controller Helm chart with AWS Pod Identity.
         type: object
         properties:
           spec:
-            description: LoadBalancerControllerSpec defines the desired state.
+            description: BaseStackSpec defines the desired state.
             type: object
             properties:
               clusterName:
@@ -100,7 +100,7 @@ spec:
             - clusterName
             - aws
           status:
-            description: LoadBalancerControllerStatus defines the observed state.
+            description: BaseStackStatus defines the observed state.
             type: object
             properties:
               ready:

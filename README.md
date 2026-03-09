@@ -1,10 +1,10 @@
-# stack-aws-base
+# aws-base-stack
 
 A Crossplane Configuration package that installs the AWS Load Balancer Controller Helm chart with automated AWS Pod Identity for IAM permissions.
 
 ## Overview
 
-`stack-aws-base` renders a Helm release for the AWS Load Balancer Controller and an AWS Pod Identity for automated IAM setup. The controller manages AWS Elastic Load Balancers for Kubernetes Ingress and Service resources.
+`aws-base-stack` renders a Helm release for the AWS Load Balancer Controller and an AWS Pod Identity for automated IAM setup. The controller manages AWS Elastic Load Balancers for Kubernetes Ingress and Service resources.
 
 ## Features
 
@@ -30,14 +30,14 @@ A Crossplane Configuration package that installs the AWS Load Balancer Controlle
 apiVersion: pkg.crossplane.io/v1
 kind: Configuration
 metadata:
-  name: stack-aws-base
+  name: aws-base-stack
 spec:
-  package: ghcr.io/hops-ops/stack-aws-base:latest
+  package: ghcr.io/hops-ops/aws-base-stack:latest
 ```
 
 ```yaml
-apiVersion: stacks.aws.hops.ops.com.ai/v1alpha1
-kind: Base
+apiVersion: aws.hops.ops.com.ai/v1alpha1
+kind: BaseStack
 metadata:
   name: aws-load-balancer-controller
   namespace: example-env

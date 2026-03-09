@@ -1,15 +1,15 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: bases.stacks.aws.hops.ops.com.ai
+  name: basestacks.aws.hops.ops.com.ai
 spec:
   compositeTypeRef:
-    apiVersion: stacks.aws.hops.ops.com.ai/v1alpha1
-    kind: Base
+    apiVersion: aws.hops.ops.com.ai/v1alpha1
+    kind: BaseStack
   mode: Pipeline
   pipeline:
   - functionRef:
-      name: hops-ops-stack-aws-baserender
+      name: hops-ops-aws-base-stackrender
     step: render
   - functionRef:
       name: crossplane-contrib-function-auto-ready

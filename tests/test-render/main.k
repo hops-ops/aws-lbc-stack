@@ -2,7 +2,7 @@ import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
 
 # ==============================================================================
-# Unit tests for helm.aws LoadBalancerController XRD
+# Unit tests for aws BaseStack XRD
 # ==============================================================================
 
 _items = [
@@ -12,13 +12,13 @@ _items = [
     metav1alpha1.CompositionTest {
         metadata.name = "minimal-renders-helm-and-pod-identity"
         spec = {
-            compositionPath = "apis/bases/composition.yaml"
-            xrdPath = "apis/bases/definition.yaml"
+            compositionPath = "apis/basestacks/composition.yaml"
+            xrdPath = "apis/basestacks/definition.yaml"
             timeoutSeconds = 60
             validate = False
             xr = {
-                apiVersion = "stacks.aws.hops.ops.com.ai/v1alpha1"
-                kind = "Base"
+                apiVersion = "aws.hops.ops.com.ai/v1alpha1"
+                kind = "BaseStack"
                 metadata.name = "test-alb"
                 spec = {
                     clusterName = "test-cluster"
@@ -57,13 +57,13 @@ _items = [
     metav1alpha1.CompositionTest {
         metadata.name = "custom-labels-applied-to-both"
         spec = {
-            compositionPath = "apis/bases/composition.yaml"
-            xrdPath = "apis/bases/definition.yaml"
+            compositionPath = "apis/basestacks/composition.yaml"
+            xrdPath = "apis/basestacks/definition.yaml"
             timeoutSeconds = 60
             validate = False
             xr = {
-                apiVersion = "stacks.aws.hops.ops.com.ai/v1alpha1"
-                kind = "Base"
+                apiVersion = "aws.hops.ops.com.ai/v1alpha1"
+                kind = "BaseStack"
                 metadata.name = "labeled-alb"
                 spec = {
                     clusterName = "test-cluster"
@@ -83,7 +83,7 @@ _items = [
                         name = "labeled-alb"
                         labels = {
                             "hops.ops.com.ai/managed" = "true"
-                            "hops.ops.com.ai/loadbalancercontroller" = "labeled-alb"
+                            "hops.ops.com.ai/basestack" = "labeled-alb"
                             team = "platform"
                         }
                     }
@@ -95,7 +95,7 @@ _items = [
                         name = "labeled-alb"
                         labels = {
                             "hops.ops.com.ai/managed" = "true"
-                            "hops.ops.com.ai/loadbalancercontroller" = "labeled-alb"
+                            "hops.ops.com.ai/basestack" = "labeled-alb"
                             team = "platform"
                         }
                     }
@@ -110,13 +110,13 @@ _items = [
     metav1alpha1.CompositionTest {
         metadata.name = "aws-role-prefix-propagates"
         spec = {
-            compositionPath = "apis/bases/composition.yaml"
-            xrdPath = "apis/bases/definition.yaml"
+            compositionPath = "apis/basestacks/composition.yaml"
+            xrdPath = "apis/basestacks/definition.yaml"
             timeoutSeconds = 60
             validate = False
             xr = {
-                apiVersion = "stacks.aws.hops.ops.com.ai/v1alpha1"
-                kind = "Base"
+                apiVersion = "aws.hops.ops.com.ai/v1alpha1"
+                kind = "BaseStack"
                 metadata.name = "prefixed-alb"
                 spec = {
                     clusterName = "prod-cluster"
@@ -148,13 +148,13 @@ _items = [
     metav1alpha1.CompositionTest {
         metadata.name = "default-namespace-kube-system"
         spec = {
-            compositionPath = "apis/bases/composition.yaml"
-            xrdPath = "apis/bases/definition.yaml"
+            compositionPath = "apis/basestacks/composition.yaml"
+            xrdPath = "apis/basestacks/definition.yaml"
             timeoutSeconds = 60
             validate = False
             xr = {
-                apiVersion = "stacks.aws.hops.ops.com.ai/v1alpha1"
-                kind = "Base"
+                apiVersion = "aws.hops.ops.com.ai/v1alpha1"
+                kind = "BaseStack"
                 metadata.name = "ns-test"
                 spec = {
                     clusterName = "test-cluster"
