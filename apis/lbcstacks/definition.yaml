@@ -82,6 +82,9 @@ spec:
                   region:
                     description: AWS region for the EKS cluster.
                     type: string
+                  vpcId:
+                    description: VPC ID of the EKS cluster. Required when pods cannot reach IMDS (the default on EKS with IMDSv2 hop-limit=1).
+                    type: string
                   permissionsBoundaryArn:
                     description: ARN of the IAM permissions boundary to apply to the role.
                     type: string

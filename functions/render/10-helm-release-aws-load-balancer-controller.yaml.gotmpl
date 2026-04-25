@@ -24,8 +24,13 @@ spec:
       {{- toYaml $state.helm.overrideAllValues | nindent 6 }}
     {{- else }}
     values:
+      fullnameOverride: aws-load-balancer-controller
+      nameOverride: aws-load-balancer-controller
       clusterName: {{ $state.clusterName }}
       region: {{ $state.aws.region }}
+      {{- if $state.aws.vpcId }}
+      vpcId: {{ $state.aws.vpcId }}
+      {{- end }}
       {{- if $state.helm.values }}
       {{- toYaml $state.helm.values | nindent 6 }}
       {{- end }}

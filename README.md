@@ -53,6 +53,7 @@ spec:
 |-------|-------------|---------|
 | `clusterName` | Name of the EKS cluster (required) | - |
 | `aws.region` | AWS region (required) | - |
+| `aws.vpcId` | VPC ID of the EKS cluster (required when pods can't reach IMDS — the EKS default with IMDSv2 hop-limit=1) | - |
 | `aws.rolePrefix` | Prefix for the IAM role name | `""` |
 | `aws.permissionsBoundaryArn` | ARN of IAM permissions boundary | `""` |
 | `aws.tags` | Custom tags for AWS resources | `{}` |

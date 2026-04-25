@@ -56,7 +56,7 @@
 {{- $state := dict
   "name" $name
   "podIdentityName" $name
-  "usageName" (printf "%s-delete-helm-before-pod-identity" $name)
+  "usageName" (printf "%s-delete-helm-lbc-before-pod-identity" $name)
   "clusterName" $clusterName
   "namespace" $namespace
   "managementPolicies" $managementPolicies
@@ -70,6 +70,7 @@
   )
   "aws" (dict
     "region" $awsRegion
+    "vpcId" ($aws.vpcId | default "")
     "providerConfigRef" $awsProviderConfigRef
     "permissionsBoundaryArn" ($aws.permissionsBoundaryArn | default "")
     "rolePrefix" ($aws.rolePrefix | default "")
