@@ -31,6 +31,15 @@ spec:
       {{- if $state.aws.vpcId }}
       vpcId: {{ $state.aws.vpcId }}
       {{- end }}
+      # Burstable: controller is a reconciler with steady-state workload.
+      # Chart ships BestEffort by default. Sized for a small-to-medium cluster.
+      resources:
+        requests:
+          cpu: 50m
+          memory: 128Mi
+        limits:
+          cpu: 200m
+          memory: 256Mi
       {{- if $state.helm.values }}
       {{- toYaml $state.helm.values | nindent 6 }}
       {{- end }}
