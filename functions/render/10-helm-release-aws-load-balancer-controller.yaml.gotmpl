@@ -3,6 +3,21 @@
 # Helm release for aws-load-balancer-controller
 #
 
+{{- $chartDefaults := dict
+  "fullnameOverride" "aws-load-balancer-controller"
+  "nameOverride" "aws-load-balancer-controller"
+  "clusterName" $state.clusterName
+  "region" $state.aws.region
+  "resources" (dict
+    "requests" (dict "cpu" "15m" "memory" "100Mi")
+    "limits" (dict "cpu" "200m" "memory" "768Mi")
+  )
+}}
+{{- if $state.aws.vpcId }}
+  {{- $chartDefaults = mergeOverwrite $chartDefaults (dict "vpcId" $state.aws.vpcId) }}
+{{- end }}
+{{- $mergedValues := mergeOverwrite $chartDefaults ($state.helm.values | default dict) }}
+
 ---
 apiVersion: helm.m.crossplane.io/v1beta1
 kind: Release
@@ -24,25 +39,7 @@ spec:
       {{- toYaml $state.helm.overrideAllValues | nindent 6 }}
     {{- else }}
     values:
-      fullnameOverride: aws-load-balancer-controller
-      nameOverride: aws-load-balancer-controller
-      clusterName: {{ $state.clusterName }}
-      region: {{ $state.aws.region }}
-      {{- if $state.aws.vpcId }}
-      vpcId: {{ $state.aws.vpcId }}
-      {{- end }}
-      # Burstable: controller is a reconciler with steady-state workload.
-      # Chart ships BestEffort by default. Sized for a small-to-medium cluster.
-      resources:
-        requests:
-          cpu: 50m
-          memory: 128Mi
-        limits:
-          cpu: 200m
-          memory: 256Mi
-      {{- if $state.helm.values }}
-      {{- toYaml $state.helm.values | nindent 6 }}
-      {{- end }}
+      {{- toYaml $mergedValues | nindent 6 }}
     {{- end }}
   rollbackLimit: 3
   providerConfigRef:
