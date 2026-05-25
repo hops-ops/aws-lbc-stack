@@ -32,7 +32,13 @@ _items = [
                     apiVersion = "helm.m.crossplane.io/v1beta1"
                     kind = "Release"
                     metadata.name = "test-alb"
-                    spec.forProvider.values.clusterName = "test-cluster"
+                    spec.forProvider.values = {
+                        clusterName = "test-cluster"
+                        resources = {
+                            requests = {cpu = "15m", memory = "100Mi"}
+                            limits = {cpu = "200m", memory = "768Mi"}
+                        }
+                    }
                 }
                 {
                     apiVersion = "aws.hops.ops.com.ai/v1alpha1"
